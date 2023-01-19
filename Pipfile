@@ -10,6 +10,7 @@ pillow = "*"
 
 [dev-packages]
 black = "*"
+ipython = {extras = ["notebook"], version = "*"}
 
 [requires]
 python_version = "3.11"
