@@ -128,5 +128,10 @@ venv/
 migrations/
 db.sqlite3
 .env
+__pycache__
+static
+media/
+venv
+.venv
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm+all
