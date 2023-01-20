@@ -9,6 +9,9 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-id"]
+
     # 객체에 대한 문자열 표현
     def __str__(self):
         return self.message
