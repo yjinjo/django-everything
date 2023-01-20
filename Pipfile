@@ -12,6 +12,7 @@ django-extensions = "*"
 [dev-packages]
 black = "*"
 jupyter = "*"
+django-debug-toolbar = "*"
 
 [requires]
 python_version = "3.11"
