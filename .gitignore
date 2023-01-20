@@ -133,5 +133,6 @@ static
 media/
 venv
 .venv
+*.ipynb
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,pycharm+all
