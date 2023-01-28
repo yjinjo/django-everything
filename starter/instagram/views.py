@@ -31,7 +31,7 @@ def post_list(request):
 #         },
 #     )
 
-post_detail = DetailView.as_view(model=Post)
+post_detail = DetailView.as_view(model=Post, queryset=Post.objects.all())
 
 
 def archives_year(request, year):
