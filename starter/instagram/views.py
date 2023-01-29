@@ -3,22 +3,21 @@ from django.views.generic import ListView, DetailView
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 
+post_list = ListView.as_view(model=Post, paginate_by=10)
 
-# post_list = ListView.as_view(model=Post)
-
-# Create your views here.
-def post_list(request):
-    qs = Post.objects.all()
-    q = request.GET.get("q", "")
-
-    if q:
-        qs = qs.filter(message__icontains=q)
-    # instagram/templates/instagram/post_list.html
-    return render(
-        request,
-        "instagram/post_list.html",
-        {"post_list": qs, "q": q},
-    )
+# # Create your views here.
+# def post_list(request):
+#     qs = Post.objects.all()
+#     q = request.GET.get("q", "")
+#
+#     if q:
+#         qs = qs.filter(message__icontains=q)
+#     # instagram/templates/instagram/post_list.html
+#     return render(
+#         request,
+#         "instagram/post_list.html",
+#         {"post_list": qs, "q": q},
+#     )
 
 
 # def post_detail(request: HttpRequest, pk: int) -> HttpResponse:

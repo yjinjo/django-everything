@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # third apps
     "django_extensions",
     "debug_toolbar",
+    "bootstrap4",
     # local apps
     "accounts",
     "blog1",
