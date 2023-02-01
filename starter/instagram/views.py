@@ -1,9 +1,12 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpRequest, Http404
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DetailView
-from django.shortcuts import render, get_object_or_404
+from django.views.generic import (
+    ListView,
+    DetailView,
+    ArchiveIndexView,
+    YearArchiveView,
+    MonthArchiveView,
+    DayArchiveView,
+)
 from .models import Post
 
 
@@ -14,34 +17,8 @@ class PostListView(LoginRequiredMixin, ListView):
 
 post_list = PostListView.as_view()
 
-# @login_required
-# # Create your views here.
-# def post_list(request):
-#     qs = Post.objects.all()
-#     q = request.GET.get("q", "")
-#
-#     if q:
-#         qs = qs.filter(message__icontains=q)
-#     # instagram/templates/instagram/post_list.html
-#     return render(
-#         request,
-#         "instagram/post_list.html",
-#         {"post_list": qs, "q": q},
-#     )
-
-
-# def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
-#     post = get_object_or_404(Post, pk=pk)
-#     return render(
-#         request,
-#         "instagram/post_detail.html",
-#         {
-#             "post": post,
-#         },
-#     )
-
 post_detail = DetailView.as_view(model=Post, queryset=Post.objects.all())
 
+post_archive = ArchiveIndexView.as_view(model=Post, date_field="created_at")
 
-def archives_year(request, year):
-    return HttpResponse(f"{year}년 archives")
+post_archive_year = YearArchiveView.as_view(model=Post, date_field="created_at")
