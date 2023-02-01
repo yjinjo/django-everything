@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.conf import settings
+from django.urls import reverse
 
 
 # Create your models here.
@@ -15,6 +16,9 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-id"]
+
+    def get_absolute_url(self):
+        return reverse("instagram:post_detail", args=[self.pk])
 
     # 객체에 대한 문자열 표현
     def __str__(self):

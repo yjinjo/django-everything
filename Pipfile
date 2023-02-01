@@ -8,6 +8,7 @@ django = "*"
 python-dotenv = "*"
 pillow = "*"
 django-extensions = "*"
+django-bootstrap4 = "*"
 
 [dev-packages]
 black = "*"
