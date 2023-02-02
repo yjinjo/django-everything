@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SETTINGS_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ["9bf0-183-96-226-160.jp.ngrok.io"]
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -138,3 +139,5 @@ INTERNAL_IPS = ["127.0.0.1"]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CSRF_TRUSTED_ORIGINS = ["https://9bf0-183-96-226-160.jp.ngrok.io"]
