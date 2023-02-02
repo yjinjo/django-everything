@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 from django.views.generic import (
     ListView,
     DetailView,
@@ -8,6 +9,19 @@ from django.views.generic import (
     DayArchiveView,
 )
 from .models import Post
+from .forms import PostForm
+
+
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save()
+            return redirect(post)
+    else:
+        form = PostForm()
+        
+    return render(request, "instagram/post_form.html", {"form": form})
 
 
 class PostListView(LoginRequiredMixin, ListView):
