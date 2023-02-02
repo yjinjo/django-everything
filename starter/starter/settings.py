@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SETTINGS_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ["9bf0-183-96-226-160.jp.ngrok.io"]
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -127,7 +128,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-# STATIC_ROOT = ""  # TODO
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # TODO
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "starter", "static")]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -138,3 +140,5 @@ INTERNAL_IPS = ["127.0.0.1"]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CSRF_TRUSTED_ORIGINS = ["https://9bf0-183-96-226-160.jp.ngrok.io"]
