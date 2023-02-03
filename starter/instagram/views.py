@@ -22,11 +22,12 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user  # 현재 로그인 User Instance
             post.save()
+            messages.success(request, "포스팅을 저장했습니다.")
             return redirect(post)
     else:
         form = PostForm()
 
-    return render(request, "instagram/post_form.html", {"form": form})
+    return render(request, "instagram/post_form.html", {"form": form, "post": None})
 
 
 @login_required
@@ -42,11 +43,12 @@ def post_edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save()
+            messages.success(request, "포스팅을 수정했습니다.")
             return redirect(post)
     else:
         form = PostForm(instance=post)
 
-    return render(request, "instagram/post_form.html", {"form": form})
+    return render(request, "instagram/post_form.html", {"form": form, "post": post})
 
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -55,6 +57,25 @@ class PostListView(LoginRequiredMixin, ListView):
 
 
 post_list = PostListView.as_view()
+
+# @login_required
+# def post_list(request):
+#     qs = Post.objects.all()
+#     q = request.GET.get("q", "")
+#     if q:
+#         qs = qs.filter(message__icontinas=q)
+#
+#     messages.info(request, "messages 테스트")
+#
+#     return render(
+#         request,
+#         "instagram/post_list.html",
+#         {
+#             "post_list": qs,
+#             "q": q,
+#         },
+#     )
+
 
 post_detail = DetailView.as_view(model=Post, queryset=Post.objects.all())
 
