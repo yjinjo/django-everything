@@ -142,3 +142,10 @@ INTERNAL_IPS = ["127.0.0.1"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CSRF_TRUSTED_ORIGINS = ["https://9bf0-183-96-226-160.jp.ngrok.io"]
+
+from django.contrib.messages import constants as messages_constants
+
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: "secondary",
+    messages_constants.ERROR: "danger",
+}
