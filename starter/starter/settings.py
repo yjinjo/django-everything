@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 import os
 
@@ -112,6 +114,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
